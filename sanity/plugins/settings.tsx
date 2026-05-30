@@ -29,9 +29,15 @@ export const pageStructure = (typeDefArray: DocumentDefinition[]): StructureReso
   return (S) => {
     const singletonItems = typeDefArray.map((typeDef) => {
       return S.listItem()
+        .id(typeDef.name)
         .title(typeDef.title!)
         .icon(typeDef.icon)
-        .child(S.editor().id(typeDef.name).schemaType(typeDef.name).documentId(typeDef.name))
+        .child(
+          S.editor()
+            .id(`${typeDef.name}-editor`)
+            .schemaType(typeDef.name)
+            .documentId(typeDef.name),
+        )
     })
 
     const defaultListItems = S.documentTypeListItems().filter(
@@ -39,6 +45,7 @@ export const pageStructure = (typeDefArray: DocumentDefinition[]): StructureReso
     )
 
     return S.list()
+      .id('site-content')
       .title('תוכן האתר')
       .items([...singletonItems, S.divider(), ...defaultListItems])
   }
