@@ -20,11 +20,11 @@ export default async function HomePage() {
           }}
         />
         <div className="relative px-4 pb-4 pt-12 text-center md:px-8 md:pt-20 md:pb-8">
-          <p className="mb-2 text-sm font-bold uppercase tracking-widest text-accent">תיפוף מערב אפריקאי</p>
+          <p className="mb-2 text-sm font-bold text-accent md:text-base">{settings.tagline}</p>
           <h1 className="text-4xl font-extrabold tracking-tight text-charcoal md:text-6xl lg:text-7xl">
             {home.headline}
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-accent md:text-2xl">{home.subheadline}</p>
+          <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-stone-700 md:text-2xl">{home.subheadline}</p>
         </div>
         <div className="tribal-band-decor h-3" aria-hidden />
       </section>
@@ -41,7 +41,7 @@ export default async function HomePage() {
 
       <section className="section-ambient px-4 py-16 md:px-8 md:py-24">
         <div className="relative mx-auto max-w-3xl text-center">
-          <SectionHeading title="קצת על שלומי" />
+          <SectionHeading title="קצת על בקצב שלי" />
           <p className="mt-8 text-lg leading-loose text-stone-700 md:text-xl">{home.aboutTeaser}</p>
           <Link href="/about" className="btn-primary mt-10">
             {home.aboutLinkText}

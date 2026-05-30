@@ -1,7 +1,25 @@
 'use client'
 
+import {imageFallbacks} from '@/lib/fallback-data'
 import {useState} from 'react'
 import type {GalleryItem} from '@/lib/types'
+
+function GalleryImage({src, alt}: {src: string; alt: string}) {
+  const chain = [src, imageFallbacks[src]].filter((url, i, arr) => url && arr.indexOf(url) === i)
+  const [index, setIndex] = useState(0)
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={chain[index]}
+      alt={alt}
+      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+      onError={() => {
+        if (index < chain.length - 1) setIndex((i) => i + 1)
+      }}
+    />
+  )
+}
 
 export function GalleryGrid({items}: {items: GalleryItem[]}) {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
@@ -29,12 +47,7 @@ export function GalleryGrid({items}: {items: GalleryItem[]}) {
             </button>
           ) : item.imageUrl ? (
             <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[21/9]' : 'aspect-video'}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.imageUrl}
-                alt={item.caption || ''}
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
+              <GalleryImage src={item.imageUrl} alt={item.caption || ''} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
           ) : null}
@@ -53,7 +66,10 @@ export function GalleryGrid({items}: {items: GalleryItem[]}) {
           role="dialog"
           aria-modal="true"
         >
-          <div className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-2xl shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="relative aspect-video w-full max-w-4xl overflow-hidden rounded-2xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               type="button"
               className="absolute -top-12 left-0 rounded-lg bg-white/10 px-4 py-2 text-white backdrop-blur hover:bg-white/20"

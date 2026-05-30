@@ -6,6 +6,7 @@ const config: NextConfig = {
     remotePatterns: [
       {hostname: 'cdn.sanity.io'},
       {hostname: 'images.unsplash.com'},
+      {hostname: '**.fbcdn.net'},
     ],
   },
   env: {

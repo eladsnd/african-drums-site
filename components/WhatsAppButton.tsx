@@ -2,7 +2,7 @@ import type {SiteSettings} from '@/lib/types'
 
 export function WhatsAppButton({
   settings,
-  message = 'שלום שלומי, אשמח לקבל פרטים נוספים על שיעורי התיפוף',
+  message = 'שלום שלומי, אשמח לפרטים על סדנה/אירוע — בקצב שלי',
   className = '',
 }: {
   settings: SiteSettings

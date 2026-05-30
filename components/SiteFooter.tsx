@@ -18,8 +18,13 @@ export function SiteFooter({settings}: {settings: SiteSettings}) {
             </a>
           )}
           {settings.facebookUrl && (
-            <a href={settings.facebookUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-accent hover:underline">
-              Facebook
+            <a
+              href={settings.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-semibold text-accent hover:underline"
+            >
+              עקבו בפייסבוק — בקצב שלי
             </a>
           )}
         </div>

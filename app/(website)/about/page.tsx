@@ -1,3 +1,4 @@
+import {HeroImage} from '@/components/HeroImage'
 import {PageHero} from '@/components/PageHero'
 import {SectionHeading} from '@/components/SectionHeading'
 import {getSiteContent} from '@/lib/data'
@@ -19,12 +20,11 @@ export default async function AboutPage() {
       <section className="mx-auto max-w-5xl px-4 py-14 md:px-8 md:py-20">
         <div className="flex flex-col items-center gap-10 md:flex-row-reverse md:items-start md:gap-14">
           {about.portraitUrl && (
-            <div className="flex-shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+            <div className="h-56 w-56 flex-shrink-0 overflow-hidden rounded-2xl shadow-2xl ring-4 ring-orange-100 md:h-72 md:w-72">
+              <HeroImage
                 src={about.portraitUrl}
                 alt={about.title}
-                className="h-56 w-56 rounded-2xl object-cover shadow-2xl ring-4 ring-orange-100 md:h-72 md:w-72"
+                className="h-full w-full object-cover"
               />
             </div>
           )}

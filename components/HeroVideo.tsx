@@ -1,5 +1,6 @@
 'use client'
 
+import {HeroImage} from '@/components/HeroImage'
 import {useState} from 'react'
 
 export function HeroVideo({
@@ -13,13 +14,20 @@ export function HeroVideo({
 }) {
   const [playing, setPlaying] = useState(false)
 
+  if (!videoUrl && posterUrl) {
+    return (
+      <HeroImage
+        src={posterUrl}
+        alt={title}
+        className="aspect-video w-full object-cover"
+      />
+    )
+  }
+
   if (!videoUrl) {
     return (
-      <div className="relative aspect-video w-full bg-stone-900">
-        {posterUrl && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={posterUrl} alt={title} className="h-full w-full object-cover" />
-        )}
+      <div className="relative aspect-video w-full bg-stone-800">
+        <HeroImage src="/images/facebook/hero.jpg" alt={title} className="h-full w-full object-cover" />
       </div>
     )
   }
@@ -46,8 +54,7 @@ export function HeroVideo({
       aria-label="הפעל וידאו"
     >
       {posterUrl && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <HeroImage
           src={posterUrl}
           alt={title}
           className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"

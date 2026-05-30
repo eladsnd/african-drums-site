@@ -1,11 +1,11 @@
 import {HebrewText} from '@/components/HebrewText'
 import {HeroImage} from '@/components/HeroImage'
+import {imageFallbacks} from '@/lib/fallback-data'
 
 type PageHeroProps = {
   title: string
   subtitle?: string
   imageUrl?: string
-  /** Tighter layout for inner pages (less vertical gap) */
   compact?: boolean
 }
 
@@ -13,6 +13,7 @@ export function PageHero({title, subtitle, imageUrl, compact = false}: PageHeroP
   const imageHeight = compact ? 'h-36 md:h-44' : 'h-48 md:h-64 lg:h-72'
   const titlePadding = compact ? 'py-5 md:py-6' : 'py-6 md:py-8'
   const subtitlePadding = compact ? 'py-4 md:py-5' : 'py-6 md:py-8'
+  const imgFallback = imageUrl ? imageFallbacks[imageUrl] : undefined
 
   return (
     <header>
@@ -25,7 +26,7 @@ export function PageHero({title, subtitle, imageUrl, compact = false}: PageHeroP
         {subtitle && !imageUrl && (
           <HebrewText
             as="p"
-            className={`mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-orange-50 md:text-lg ${subtitlePadding}`}
+            className={`mx-auto mt-3 max-w-2xl text-center text-base leading-relaxed text-orange-50 md:text-lg`}
           >
             {subtitle}
           </HebrewText>
@@ -36,7 +37,11 @@ export function PageHero({title, subtitle, imageUrl, compact = false}: PageHeroP
 
       {imageUrl && (
         <div className={`relative w-full overflow-hidden bg-stone-800 ${imageHeight}`}>
-          <HeroImage src={imageUrl} className="h-full w-full object-cover brightness-90 saturate-110" />
+          <HeroImage
+            src={imageUrl}
+            fallback={imgFallback}
+            className="h-full w-full object-cover brightness-90 saturate-110"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-black/15" />
         </div>
       )}
