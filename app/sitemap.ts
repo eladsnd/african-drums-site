@@ -3,7 +3,18 @@ import type {MetadataRoute} from 'next'
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/lessons', '/workshops', '/about', '/gallery', '/contact']
+  const routes = [
+    '',
+    '/workshops',
+    '/performances',
+    '/bar-mitzvah',
+    '/schools',
+    '/special',
+    '/lessons',
+    '/about',
+    '/gallery',
+    '/contact',
+  ]
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

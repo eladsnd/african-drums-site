@@ -30,6 +30,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). The site runs immediately with Hebrew placeholder content — no Sanity setup required.
 
+**Sanity CMS (for שלומי):** see [docs/SANITY-SETUP.md](docs/SANITY-SETUP.md) (developer) and [docs/STUDIO-GUIDE.md](docs/STUDIO-GUIDE.md) (editing + videos).
+
 ## Connect Sanity CMS
 
 1. Create a project at [sanity.io/manage](https://www.sanity.io/manage)

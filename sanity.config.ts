@@ -13,12 +13,12 @@ import lessonPage, {
   scheduleEntry,
 } from '@/sanity/schemas/singletons/lessonPage'
 import siteSettings from '@/sanity/schemas/singletons/siteSettings'
-import workshopsPage, {workshop} from '@/sanity/schemas/singletons/workshopsPage'
+import servicePage from '@/sanity/schemas/documents/servicePage'
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 
-const singletons = [siteSettings, homePage, lessonPage, workshopsPage, aboutPage]
+const singletons = [siteSettings, homePage, lessonPage, aboutPage]
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'ניהול אתר — תיפוף אפריקאי'
@@ -33,12 +33,11 @@ export default defineConfig({
       siteSettings,
       homePage,
       lessonPage,
-      workshopsPage,
       aboutPage,
       scheduleEntry,
       lessonType,
       pricingTier,
-      workshop,
+      servicePage,
       testimonial,
       galleryItem,
       mediaItem,

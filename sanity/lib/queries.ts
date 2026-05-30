@@ -48,22 +48,14 @@ export const siteContentQuery = defineQuery(`{
     },
     pricingNote
   },
-  "workshops": *[_type == "workshopsPage"][0]{
+  "services": *[_type == "servicePage"] | order(order asc){
+    slug,
     title,
     intro,
-    upcomingWorkshops[]{
-      _key,
-      anchorId,
-      title,
-      date,
-      location,
-      description,
-      registrationUrl
-    },
-    privateTitle,
-    privateDescription,
-    privateCtaLabel,
-    privateCtaUrl
+    body,
+    "imageUrls": images[].asset->url,
+    "heroImageUrl": heroImage.asset->url,
+    ctaLabel
   },
   "about": *[_type == "aboutPage"][0]{
     title,

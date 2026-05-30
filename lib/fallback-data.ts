@@ -77,67 +77,68 @@ export const fallbackContent: SiteContent = {
     ],
     pricingNote: 'מחירים לפי סוג אירוע, משך ומספר משתתפים. שלחו הודעה בוואטסאפ.',
   },
-  workshops: {
-    title: 'סדנאות והופעות',
-    intro: 'מתופפים בכל אירוע — סדנאות והופעות מותאמות לקהל שלכם.',
-    upcomingWorkshops: [
-      {
-        _key: 'workshops',
-        anchorId: 'workshops',
-        title: 'סדנאות',
-        date: 'לפי תיאום',
-        location: 'בכל הארץ',
-        description:
-          'סדנאות קצב ותיפוף אפריקאי למבוגרים וילדים — מעגלים, גיבושים, ימי הולדת ואירועים קהילתיים. בלי ניסיון קודם.',
-        registrationUrl: wa(),
-      },
-      {
-        _key: 'performances',
-        anchorId: 'performances',
-        title: 'הופעות',
-        date: 'לפי תיאום',
-        location: 'בכל הארץ',
-        description:
-          'מתופפים חיים לאירועים, חתונות, פסטיבלים ומסיבות — אנרגיה אפריקאית אמיתית על הבמה.',
-        registrationUrl: wa(),
-      },
-      {
-        _key: 'bar-mitzvah',
-        anchorId: 'bar-mitzvah',
-        title: 'בר מצווה',
-        date: 'לפי תיאום',
-        location: 'בכל הארץ',
-        description:
-          'חוויית תיפוף לבר/בת מצווה — סדנה משותפת, הופעה או שילוב. מותאם לגיל, למשפחה ולאווירה של האירוע.',
-        registrationUrl: wa(),
-      },
-      {
-        _key: 'schools',
-        anchorId: 'schools',
-        title: 'בתי ספר',
-        date: 'לפי תיאום',
-        location: 'בכל הארץ',
-        description:
-          'סדנאות לכיתות, קייטנות וימי גיבוש בבתי ספר — חינוכי, משחקי ומחבר. ניסיון רב בעבודה עם ילדים.',
-        registrationUrl: wa(),
-      },
-      {
-        _key: 'special',
-        anchorId: 'special',
-        title: 'צרכים מיוחדים',
-        date: 'לפי תיאום',
-        location: 'בכל הארץ',
-        description:
-          'סדנאות מותאמות אישית — מרחב בטוח, מכבד ומלא קצב. ניסיון רב בהנגשה וליווי קבוצות מגוונות.',
-        registrationUrl: wa(),
-      },
-    ],
-    privateTitle: 'אירוע מיוחד?',
-    privateDescription:
-      'יום הולדת, גיבוש, פסטיבל או מעגל קהילתי — מגיעים עם תופים, מובילים חוויה מלאת קצב ושמחה. בלי ניסיון קודם.',
-    privateCtaLabel: 'בואו נדבר בוואטסאפ',
-    privateCtaUrl: wa(),
-  },
+  services: [
+    {
+      slug: 'workshops',
+      title: 'סדנאות',
+      intro: 'סדנאות קצב ותיפוף אפריקאי — מעגלים, גיבושים ואירועים קהילתיים.',
+      body:
+        'סדנאות קצב ותיפוף אפריקאי למבוגרים וילדים — חוויה שבטית מלאת אנרגיה, קצב וחיבור. אין צורך בניסיון קודם.\n\n' +
+        'מתאימות לימי הולדת, גיבושי צוות, מעגלים פתוחים ואירועים פרטיים. מגיעים עם תופים, מנחים את הקבוצה ויוצרים יחד רגע של קצב ושמחה.',
+      imageUrls: [siteImages.gallery[1], siteImages.gallery[0]],
+      heroImageUrl: siteImages.gallery[1],
+      heroImagePosition: 'center 40%',
+      ctaLabel: 'לתיאום סדנה — שלחו הודעה בוואטסאפ',
+    },
+    {
+      slug: 'performances',
+      title: 'הופעות',
+      intro: 'מתופפים חיים לאירועים, חתונות, פסטיבלים ומסיבות.',
+      body:
+        'הופעות עם תופים אפריקאיים אמיתיים — אנרגיה, מקצב וחוויה בלתי נשכחת על הבמה או במרחב האירוע.\n\n' +
+        'מתאים לחתונות, אירועי חברה, פסטיבלים ומסיבות פרטיות. אורך ומבנה מותאמים לאירוע שלכם.',
+      imageUrls: [siteImages.hero, siteImages.gallery[3]],
+      heroImageUrl: siteImages.hero,
+      heroImagePosition: 'center 42%',
+      ctaLabel: 'לתיאום הופעה — שלחו הודעה בוואטסאפ',
+    },
+    {
+      slug: 'bar-mitzvah',
+      title: 'בר מצווה',
+      intro: 'חוויית תיפוף לבר/בת מצווה — סדנה, הופעה או שילוב.',
+      body:
+        'יום מיוחד שמגיע לחוויה מיוחדת — מעגל תיפוף משותף עם המשפחה והחברים, או הופעה חגיגית עם שלומי והתופים.\n\n' +
+        'התוכן מותאם לגיל, לאווירה ולמה שחשוב לכם. אפשר לשלב סדנה קצרה + הופעה, או מעגל מלא עם כולם על התופים.',
+      imageUrls: [siteImages.gallery[0], siteImages.hero],
+      heroImageUrl: siteImages.gallery[0],
+      heroImagePosition: '62% 48%',
+      ctaLabel: 'לתיאום בר/בת מצווה — שלחו הודעה בוואטסאפ',
+    },
+    {
+      slug: 'schools',
+      title: 'בתי ספר',
+      intro: 'סדנאות לכיתות, קייטנות וימי גיבוש בבתי ספר.',
+      body:
+        'סדנאות מותאמות לבתי ספר ולמוסדות חינוך — חוויה משחקית, מחנכת ומחברת שמביאה קצב אפריקאי לכיתה.\n\n' +
+        'ניסיון רב בעבודה עם ילדים ונוער. אפשר סדנה חד-פעמית, סדרת מפגשים או יום גיבוש לכל השכבה.',
+      imageUrls: [siteImages.gallery[1], siteImages.gallery[2]],
+      heroImageUrl: siteImages.gallery[2],
+      heroImagePosition: 'center 40%',
+      ctaLabel: 'לתיאום לבית ספר — שלחו הודעה בוואטסאפ',
+    },
+    {
+      slug: 'special',
+      title: 'צרכים מיוחדים',
+      intro: 'סדנאות מותאמות אישית — מרחב בטוח, מכבד ומלא קצב.',
+      body:
+        'סדנאות לקבוצות עם צרכים מיוחדים — מרחב מכבד, גמיש ומלא הקשבה. ניסיון רב בהנגשה וליווי קבוצות מגוונות.\n\n' +
+        'הקצב והתיפוף מאפשרים חיבור, ביטוי ושמחה בלי שיפוט. נשמח לתאם יחד את הפורמט המתאים לכם.',
+      imageUrls: [siteImages.gallery[2], siteImages.portrait],
+      heroImageUrl: siteImages.gallery[3],
+      heroImagePosition: '72% 40%',
+      ctaLabel: 'לתיאום סדנה מותאמת — שלחו הודעה בוואטסאפ',
+    },
+  ],
   about: {
     title: 'שלומי סימני',
     bio:

@@ -47,13 +47,5 @@ export function applyWhatsAppToContent(content: SiteContent): SiteContent {
       ...content.lessons,
       registrationUrl: content.lessons.registrationUrl ? waUrl : undefined,
     },
-    workshops: {
-      ...content.workshops,
-      upcomingWorkshops: content.workshops.upcomingWorkshops.map((w) => ({
-        ...w,
-        registrationUrl: w.registrationUrl ? waUrl : undefined,
-      })),
-      privateCtaUrl: content.workshops.privateCtaUrl ? waUrl : undefined,
-    },
   }
 }

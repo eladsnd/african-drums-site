@@ -1,18 +1,22 @@
-/** Main header navigation (RTL). Service items anchor to /workshops sections. */
+import {servicePaths, type ServiceSlug} from './services'
+
+/** Main header navigation (RTL) */
 export type NavItem = {
   href: string
   label: string
-  /** Section id on /workshops for hash links */
-  sectionId?: string
 }
+
+const serviceNav: {slug: ServiceSlug; label: string}[] = [
+  {slug: 'workshops', label: 'סדנאות'},
+  {slug: 'performances', label: 'הופעות'},
+  {slug: 'bar-mitzvah', label: 'בר מצווה'},
+  {slug: 'schools', label: 'בתי ספר'},
+  {slug: 'special', label: 'צרכים מיוחדים'},
+]
 
 export const mainNavItems: NavItem[] = [
   {href: '/', label: 'בית'},
-  {href: '/workshops#workshops', label: 'סדנאות', sectionId: 'workshops'},
-  {href: '/workshops#performances', label: 'הופעות', sectionId: 'performances'},
-  {href: '/workshops#bar-mitzvah', label: 'בר מצווה', sectionId: 'bar-mitzvah'},
-  {href: '/workshops#schools', label: 'בתי ספר', sectionId: 'schools'},
-  {href: '/workshops#special', label: 'צרכים מיוחדים', sectionId: 'special'},
+  ...serviceNav.map(({slug, label}) => ({href: servicePaths[slug], label})),
   {href: '/gallery', label: 'גלריה'},
   {href: '/about', label: 'אודות'},
   {href: '/contact', label: 'צרו קשר'},

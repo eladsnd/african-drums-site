@@ -60,25 +60,15 @@ export type LessonPage = {
   pricingNote?: string
 }
 
-export type Workshop = {
-  _key: string
-  /** Matches nav hash: workshops, performances, bar-mitzvah, schools, special */
-  anchorId?: string
-  title: string
-  date: string
-  location: string
-  description: string
-  registrationUrl?: string
-}
-
-export type WorkshopsPage = {
+export type ServicePage = {
+  slug: string
   title: string
   intro: string
-  upcomingWorkshops: Workshop[]
-  privateTitle: string
-  privateDescription: string
-  privateCtaLabel: string
-  privateCtaUrl?: string
+  body: string
+  imageUrls: string[]
+  heroImageUrl?: string
+  heroImagePosition?: string
+  ctaLabel?: string
 }
 
 export type AboutPage = {
@@ -113,7 +103,7 @@ export type SiteContent = {
   settings: SiteSettings
   home: HomePage
   lessons: LessonPage
-  workshops: WorkshopsPage
+  services: ServicePage[]
   about: AboutPage
   media: MediaItem[]
   testimonials: Testimonial[]

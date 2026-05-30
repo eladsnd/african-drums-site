@@ -24,6 +24,10 @@ export const pageHeroConfig: Record<string, PageHeroImage> = {
   lessons: {src: '/images/hero.jpg', objectPosition: 'center 42%'},
   /** מעגל תיפוף אפריקאי — אווירת סדנה */
   workshops: {src: '/images/gallery-1.jpg', objectPosition: '62% 48%'},
+  performances: {src: '/images/hero.jpg', objectPosition: 'center 42%'},
+  'bar-mitzvah': {src: '/images/gallery-1.jpg', objectPosition: '55% 45%'},
+  schools: {src: '/images/gallery-2.jpg', objectPosition: 'center 40%'},
+  special: {src: '/images/gallery-3.jpg', objectPosition: '72% 40%'},
   about: {src: '/images/profile.jpg', objectPosition: 'center center'},
   gallery: {src: '/images/gallery-1.jpg', objectPosition: '55% 45%'},
   contact: {src: '/images/gallery-3.jpg', objectPosition: '72% 40%'},
