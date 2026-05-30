@@ -9,7 +9,8 @@
     "format": "npx prettier --write . --ignore-path .gitignore",
     "type-check": "tsc --noEmit",
     "sync-photos": "bash scripts/sync-photos.sh",
-    "seed:sanity": "npx tsx scripts/seed-sanity.ts"
+    "seed:sanity": "npx tsx scripts/seed-sanity.ts",
+    "sanity:check-token": "npx tsx scripts/check-sanity-token.ts"
   },
   "dependencies": {
     "@next/env": "16.2.6",
