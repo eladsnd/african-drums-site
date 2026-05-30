@@ -1,7 +1,7 @@
 import {PageHero} from '@/components/PageHero'
 import {SectionHeading} from '@/components/SectionHeading'
 import {getSiteContent} from '@/lib/data'
-import {pageHeroImages} from '@/lib/fallback-data'
+import {pageHeroConfig} from '@/lib/fallback-data'
 import type {Metadata} from 'next'
 import Link from 'next/link'
 
@@ -15,7 +15,13 @@ export default async function WorkshopsPage() {
 
   return (
     <>
-      <PageHero compact title={workshops.title} subtitle={workshops.intro} imageUrl={pageHeroImages.workshops} />
+      <PageHero
+        compact
+        title={workshops.title}
+        subtitle={workshops.intro}
+        imageUrl={pageHeroConfig.workshops.src}
+        imagePosition={pageHeroConfig.workshops.objectPosition}
+      />
 
       <section className="mx-auto max-w-4xl space-y-8 px-4 py-14 md:px-8 md:py-20">
         <SectionHeading title="סדנאות קרובות" centered />

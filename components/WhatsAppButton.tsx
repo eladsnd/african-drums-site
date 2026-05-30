@@ -1,15 +1,16 @@
 import type {SiteSettings} from '@/lib/types'
+import {buildWhatsAppUrl, WHATSAPP_INTEREST_MESSAGE} from '@/lib/whatsapp'
 
 export function WhatsAppButton({
   settings,
-  message = 'שלום שלומי, אשמח לפרטים על סדנה/אירוע — בקצב שלי',
+  message = WHATSAPP_INTEREST_MESSAGE,
   className = '',
 }: {
   settings: SiteSettings
   message?: string
   className?: string
 }) {
-  const url = `https://wa.me/${settings.whatsappNumber}?text=${encodeURIComponent(message)}`
+  const url = buildWhatsAppUrl(settings.whatsappNumber, message)
 
   return (
     <a

@@ -1,5 +1,6 @@
 'use client'
 
+import {FACEBOOK_PAGE_URL} from '@/lib/facebook'
 import {useState} from 'react'
 import {DecorativeDivider} from '@/components/DecorativeDivider'
 import {SectionHeading} from '@/components/SectionHeading'
@@ -71,6 +72,19 @@ export function TestimonialCarousel({testimonials}: {testimonials: Testimonial[]
             </div>
           )}
         </div>
+
+        <p className="mt-8 text-center text-sm leading-relaxed text-stone-600">
+          בפייסבוק אין עדיין ביקורות כוכבים — רק תגובות על פוסטים.
+          <br />
+          <a
+            href={FACEBOOK_PAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-accent underline-offset-2 hover:underline"
+          >
+            עקבו בפייסבוק והשאירו המלצה
+          </a>
+        </p>
       </div>
     </section>
   )

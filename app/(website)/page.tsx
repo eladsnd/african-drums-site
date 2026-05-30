@@ -53,7 +53,9 @@ export default async function HomePage() {
 
       <section className="border-t border-orange-200/50 bg-gradient-to-b from-orange-50/50 to-[var(--color-bg)] px-4 py-16 text-center md:py-20">
         <h2 className="text-2xl font-extrabold md:text-3xl">מוכנים להצטרף למעגל?</h2>
-        <p className="mx-auto mt-3 max-w-md text-stone-600">שלחו הודעה בוואטסאפ ונחזור אליכם בהקדם</p>
+        <p className="mx-auto mt-3 max-w-md text-stone-600">
+          לחצו לפתיחת וואטסאפ עם הודעה מוכנה — רק לשלוח ולציין שאתם מעוניינים
+        </p>
         <div className="mt-8">
           <WhatsAppButton settings={settings} />
         </div>

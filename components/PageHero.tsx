@@ -1,20 +1,30 @@
 import {HebrewText} from '@/components/HebrewText'
 import {HeroImage} from '@/components/HeroImage'
-import {imageFallbacks} from '@/lib/fallback-data'
+import {imageSafeFallback} from '@/lib/images'
 
 type PageHeroProps = {
   title: string
   subtitle?: string
   imageUrl?: string
+  /** CSS object-position — keeps faces in frame when cropped */
+  imagePosition?: string
   compact?: boolean
 }
 
-export function PageHero({title, subtitle, imageUrl, compact = false}: PageHeroProps) {
-  const imageHeight = compact ? 'h-36 md:h-44' : 'h-48 md:h-64 lg:h-72'
+export function PageHero({
+  title,
+  subtitle,
+  imageUrl,
+  imagePosition = 'center center',
+  compact = false,
+}: PageHeroProps) {
+  const imageHeight = compact
+    ? imageUrl
+      ? 'h-44 sm:h-52 md:h-60'
+      : 'h-36 md:h-44'
+    : 'h-48 md:h-64 lg:h-72'
   const titlePadding = compact ? 'py-5 md:py-6' : 'py-6 md:py-8'
   const subtitlePadding = compact ? 'py-4 md:py-5' : 'py-6 md:py-8'
-  const imgFallback = imageUrl ? imageFallbacks[imageUrl] : undefined
-
   return (
     <header>
       <div className="tribal-band-decor h-2.5" aria-hidden />
@@ -39,10 +49,11 @@ export function PageHero({title, subtitle, imageUrl, compact = false}: PageHeroP
         <div className={`relative w-full overflow-hidden bg-stone-800 ${imageHeight}`}>
           <HeroImage
             src={imageUrl}
-            fallback={imgFallback}
-            className="h-full w-full object-cover brightness-90 saturate-110"
+            fallback={imageSafeFallback}
+            objectPosition={imagePosition}
+            className="h-full w-full object-cover brightness-[0.92] saturate-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-black/10 to-black/25" />
         </div>
       )}
 

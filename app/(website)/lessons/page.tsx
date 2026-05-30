@@ -4,7 +4,7 @@ import {PageHero} from '@/components/PageHero'
 import {SectionHeading} from '@/components/SectionHeading'
 import {TestimonialCarousel} from '@/components/TestimonialCarousel'
 import {getSiteContent} from '@/lib/data'
-import {pageHeroImages} from '@/lib/fallback-data'
+import {pageHeroConfig} from '@/lib/fallback-data'
 import type {Metadata} from 'next'
 import Link from 'next/link'
 
@@ -22,7 +22,8 @@ export default async function LessonsPage() {
         compact
         title={lessons.title}
         subtitle={lessons.intro}
-        imageUrl={pageHeroImages.lessons}
+        imageUrl={pageHeroConfig.lessons.src}
+        imagePosition={pageHeroConfig.lessons.objectPosition}
       />
 
       {lessons.lessonTypes.map((lesson, i) => (

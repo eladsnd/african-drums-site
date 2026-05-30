@@ -1,25 +1,8 @@
 'use client'
 
-import {imageFallbacks} from '@/lib/fallback-data'
+import {HeroImage} from '@/components/HeroImage'
 import {useState} from 'react'
 import type {GalleryItem} from '@/lib/types'
-
-function GalleryImage({src, alt}: {src: string; alt: string}) {
-  const chain = [src, imageFallbacks[src]].filter((url, i, arr) => url && arr.indexOf(url) === i)
-  const [index, setIndex] = useState(0)
-
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={chain[index]}
-      alt={alt}
-      className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-      onError={() => {
-        if (index < chain.length - 1) setIndex((i) => i + 1)
-      }}
-    />
-  )
-}
 
 export function GalleryGrid({items}: {items: GalleryItem[]}) {
   const [activeVideo, setActiveVideo] = useState<string | null>(null)
@@ -47,7 +30,11 @@ export function GalleryGrid({items}: {items: GalleryItem[]}) {
             </button>
           ) : item.imageUrl ? (
             <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[21/9]' : 'aspect-video'}`}>
-              <GalleryImage src={item.imageUrl} alt={item.caption || ''} />
+              <HeroImage
+                src={item.imageUrl}
+                alt={item.caption || ''}
+                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition group-hover:opacity-100" />
             </div>
           ) : null}

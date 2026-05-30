@@ -27,7 +27,7 @@ export function HeroVideo({
   if (!videoUrl) {
     return (
       <div className="relative aspect-video w-full bg-stone-800">
-        <HeroImage src="/images/facebook/hero.jpg" alt={title} className="h-full w-full object-cover" />
+        <HeroImage src="/images/hero.jpg" alt={title} className="h-full w-full object-cover" />
       </div>
     )
   }

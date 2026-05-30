@@ -1,36 +1,37 @@
 'use client'
 
-import {imageFallbacks} from '@/lib/fallback-data'
+import {imageSafeFallback} from '@/lib/images'
 import {useState} from 'react'
-
-function resolveFallback(src: string, explicit?: string) {
-  return imageFallbacks[src] || explicit || '/images/hero-poster.svg'
-}
 
 export function HeroImage({
   src,
   fallback,
   className = '',
   alt = '',
+  objectPosition,
 }: {
   src: string
   fallback?: string
   className?: string
   alt?: string
+  objectPosition?: string
 }) {
-  const chain = [src, resolveFallback(src, fallback)].filter(
-    (url, i, arr) => url && arr.indexOf(url) === i,
+  const chain = [src, fallback, imageSafeFallback, '/logo.svg'].filter(
+    (url, i, arr) => Boolean(url) && arr.indexOf(url) === i,
   )
   const [index, setIndex] = useState(0)
+  const current = chain[Math.min(index, chain.length - 1)]
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={chain[index]}
+      key={current}
+      src={current}
       alt={alt}
       className={className}
+      style={objectPosition ? {objectPosition} : undefined}
       onError={() => {
-        if (index < chain.length - 1) setIndex((i) => i + 1)
+        setIndex((i) => (i < chain.length - 1 ? i + 1 : i))
       }}
     />
   )

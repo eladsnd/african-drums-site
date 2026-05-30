@@ -1,5 +1,6 @@
 'use client'
 
+import {HeroImage} from '@/components/HeroImage'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
 import {useState} from 'react'
@@ -17,24 +18,23 @@ const navItems = [
 export function SiteHeader({settings}: {settings: SiteSettings}) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const taglineShort = settings.tagline.split('·')[0]?.trim() || settings.tagline
 
   return (
     <header className="sticky top-0 z-50 border-b border-orange-200/50 bg-[var(--color-bg)]/90 shadow-sm backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8 md:py-4">
         <Link href="/" className="group flex items-center gap-3">
-          {settings.logoUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={settings.logoUrl}
-              alt=""
-              className="h-11 w-11 rounded-full shadow-md ring-2 ring-orange-200/60 transition group-hover:ring-accent/40 md:h-12 md:w-12"
-            />
-          )}
+          <HeroImage
+            src={settings.logoUrl || '/logo.svg'}
+            fallback="/logo.svg"
+            alt={settings.siteName}
+            className="h-11 w-11 rounded-full object-cover shadow-md ring-2 ring-orange-200/60 transition group-hover:ring-accent/40 md:h-12 md:w-12"
+          />
           <span className="hidden flex-col sm:flex">
             <span className="text-sm font-extrabold leading-tight text-charcoal md:text-base">
               {settings.siteName}
             </span>
-            <span className="text-xs font-medium text-accent">{settings.tagline.split('—')[0]}</span>
+            <span className="text-xs font-medium text-accent">{taglineShort}</span>
           </span>
         </Link>
 
