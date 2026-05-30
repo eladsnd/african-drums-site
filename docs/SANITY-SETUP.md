@@ -84,11 +84,14 @@ Run **once** from the project folder (local `.env.local`):
 npm run seed:sanity
 ```
 
-Requires an **Editor** token in `.env.local`:
+Requires a separate **Editor** token (not the Viewer read token):
 
 ```env
-SANITY_API_WRITE_TOKEN=your_editor_token
+SANITY_API_WRITE_TOKEN=sk....   # Permissions: Editor
+SANITY_API_READ_TOKEN=sk....    # Permissions: Viewer — site only, cannot seed
 ```
+
+Create: sanity.io/manage → API → Tokens → **Add API token** → **Editor**.
 
 This uploads images from `public/images/` and creates/updates:
 

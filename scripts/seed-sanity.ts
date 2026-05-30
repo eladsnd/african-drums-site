@@ -21,12 +21,21 @@ loadEnvConfig(process.cwd(), true, {info: () => null, error: console.error})
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
-const token =
-  process.env.SANITY_API_WRITE_TOKEN ||
-  process.env.SANITY_API_READ_TOKEN
+const token = process.env.SANITY_API_WRITE_TOKEN
 
 if (!projectId || !token) {
-  console.error('Missing NEXT_PUBLIC_SANITY_PROJECT_ID or SANITY_API_WRITE_TOKEN in .env.local')
+  console.error(`
+Missing config in .env.local:
+
+  NEXT_PUBLIC_SANITY_PROJECT_ID=1d3ieqkx
+  SANITY_API_WRITE_TOKEN=<Editor token — NOT the Viewer/read token>
+
+Create an Editor token:
+  sanity.io/manage → shlomi drums → API → Tokens → Add API token
+  Name: seed-local   Permissions: Editor   (needs create + upload)
+
+SANITY_API_READ_TOKEN cannot seed — it is read-only.
+`)
   process.exit(1)
 }
 
@@ -178,7 +187,19 @@ async function seed() {
   console.log('WhatsApp on production: still set WHATSAPP_NUMBER in Vercel (not overwritten by seed).')
 }
 
-seed().catch((err) => {
-  console.error(err)
+seed().catch((err: {statusCode?: number; message?: string}) => {
+  if (err?.statusCode === 403) {
+    console.error(`
+Permission denied — your token cannot create/upload.
+
+Fix: create a new token with Editor (or Administrator) permissions.
+Do not use the Viewer token from SANITY_API_READ_TOKEN.
+
+sanity.io/manage → API → Tokens → Add API token → Editor
+Then set SANITY_API_WRITE_TOKEN in .env.local and run again.
+`)
+  } else {
+    console.error(err)
+  }
   process.exit(1)
 })
