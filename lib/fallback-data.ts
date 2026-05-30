@@ -137,15 +137,7 @@ export const fallbackContent: SiteContent = {
       source: 'בקצב שלי מתופפים',
     },
   ],
-  /** Only verified quotes — Facebook has 0 star reviews; one real comment on a post */
-  testimonials: [
-    {
-      _key: 't1',
-      quote: 'כל הכבוד שלומי, בהצלחה!',
-      author: 'כפיר שולמן',
-      role: 'תגובה בפייסבוק · מאי 2026',
-    },
-  ],
+  testimonials: [],
   gallery: [
     {
       _key: 'g1',
