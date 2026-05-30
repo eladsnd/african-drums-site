@@ -33,13 +33,24 @@ body {
   background-size: 100% 600px, 360px;
 }
 
-.tribal-band {
+/* Thin decorative strips — pattern only, no text */
+.tribal-band-decor {
   background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #ea580c 100%);
   background-image:
     url('/patterns/tribal-band.svg'),
     linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #ea580c 100%);
   background-repeat: repeat-x, no-repeat;
   background-size: auto 100%, cover;
+}
+
+/* Solid band for titles — no pattern overlay */
+.page-hero-title-band {
+  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 45%, #ea580c 100%);
+  box-shadow: 0 4px 20px rgba(154, 52, 18, 0.2);
+}
+
+.tribal-band {
+  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #ea580c 100%);
   box-shadow: 0 4px 20px rgba(154, 52, 18, 0.25);
 }
 

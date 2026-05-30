@@ -26,7 +26,7 @@ export default async function HomePage() {
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg font-medium text-accent md:text-2xl">{home.subheadline}</p>
         </div>
-        <div className="tribal-band h-3" />
+        <div className="tribal-band-decor h-3" aria-hidden />
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-10 md:px-8 md:py-14">

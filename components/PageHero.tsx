@@ -7,16 +7,17 @@ type PageHeroProps = {
 export function PageHero({title, subtitle, imageUrl}: PageHeroProps) {
   return (
     <div className="relative">
-      <div className="tribal-band flex min-h-[5.5rem] items-center justify-center px-4 py-8 md:min-h-[7rem]">
-        <div className="relative z-10 text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white drop-shadow-md md:text-5xl">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="mt-2 text-base font-medium text-orange-100 md:text-lg">{subtitle}</p>
-          )}
-        </div>
+      {/* Decorative strips only — no text here */}
+      <div className="tribal-band-decor h-3" aria-hidden />
+
+      {/* Title on solid gradient (readable) */}
+      <div className="page-hero-title-band px-4 py-8 md:py-10">
+        <h1 className="text-center text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+          {title}
+        </h1>
       </div>
+
+      <div className="tribal-band-decor h-3" aria-hidden />
 
       {imageUrl && (
         <div className="relative h-48 w-full overflow-hidden md:h-64 lg:h-80">
@@ -28,6 +29,15 @@ export function PageHero({title, subtitle, imageUrl}: PageHeroProps) {
             style={{filter: 'saturate(1.1) brightness(0.85)'}}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg)] via-transparent to-black/20" />
+        </div>
+      )}
+
+      {/* Subtitle below image on cream — never on the pattern */}
+      {subtitle && (
+        <div className="border-b border-orange-100/80 bg-[var(--color-bg)] px-4 py-8 md:px-8 md:py-10">
+          <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-stone-700 md:text-xl">
+            {subtitle}
+          </p>
         </div>
       )}
     </div>

@@ -3,7 +3,7 @@ import type {SiteSettings} from '@/lib/types'
 export function SiteFooter({settings}: {settings: SiteSettings}) {
   return (
     <footer className="mt-auto border-t border-stone-200/60 bg-cream">
-      <div className="tribal-band h-3" />
+      <div className="tribal-band-decor h-3" aria-hidden />
       <div className="mx-auto max-w-6xl px-4 py-10 text-center md:px-8">
         <p className="text-sm text-stone-600 md:text-base">{settings.footerText}</p>
         <div className="mt-4 flex justify-center gap-4">
