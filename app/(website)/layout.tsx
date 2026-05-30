@@ -3,6 +3,9 @@ import {SiteHeader} from '@/components/SiteHeader'
 import {getSiteContent} from '@/lib/data'
 import type {Metadata} from 'next'
 
+/** Read WHATSAPP_NUMBER from Vercel env on each request (not only at build) */
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata(): Promise<Metadata> {
   const {settings} = await getSiteContent()
   return {

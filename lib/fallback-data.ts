@@ -1,12 +1,13 @@
 import {siteImages} from './images'
 import type {SiteContent} from './types'
-import {buildWhatsAppUrl, getWhatsAppNumber} from './whatsapp'
+import {buildWhatsAppUrl} from './whatsapp'
 
 import {FACEBOOK_PAGE_URL} from './facebook'
 
 export {FACEBOOK_PAGE_URL}
 
-const wa = () => buildWhatsAppUrl(getWhatsAppNumber())
+/** Overridden at runtime from WHATSAPP_NUMBER in getSiteContent() */
+const wa = () => buildWhatsAppUrl('972501234567')
 
 export const fallbackContent: SiteContent = {
   settings: {
@@ -15,7 +16,7 @@ export const fallbackContent: SiteContent = {
     logoUrl: siteImages.logo,
     accentColor: '#C2410C',
     backgroundColor: '#FFF7ED',
-    whatsappNumber: getWhatsAppNumber(),
+    whatsappNumber: '972501234567',
     contactEmail: 'simani.shlomi@gmail.com',
     facebookUrl: FACEBOOK_PAGE_URL,
     footerText: '© בקצב שלי — שלומי סימני. כל הזכויות שמורות.',

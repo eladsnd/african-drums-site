@@ -1,13 +1,18 @@
 import type {SiteContent} from './types'
 
 /**
- * WhatsApp number in international format without + (e.g. 972501234567).
- * Set `NEXT_PUBLIC_WHATSAPP_NUMBER` in Vercel / `.env.local`.
+ * Israel mobile in international format without + (e.g. 972501234567).
+ *
+ * Prefer `WHATSAPP_NUMBER` (server, read at runtime on Vercel).
+ * `NEXT_PUBLIC_WHATSAPP_NUMBER` also works but requires a rebuild when changed.
  */
-export function getWhatsAppNumber(): string {
-  const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim()
-  if (raw) return raw.replace(/\D/g, '')
-  return '972501234567'
+export function getWhatsAppNumber(): string | undefined {
+  const raw =
+    process.env.WHATSAPP_NUMBER?.trim() ||
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.trim()
+  if (!raw) return undefined
+  const digits = raw.replace(/\D/g, '')
+  return digits.length >= 10 ? digits : undefined
 }
 
 /** Pre-filled WhatsApp text when someone clicks a contact / registration link */
@@ -32,6 +37,7 @@ export function buildWhatsAppUrl(
 /** Apply env/CMS phone to all WhatsApp links in site content */
 export function applyWhatsAppToContent(content: SiteContent): SiteContent {
   const num = getWhatsAppNumber()
+  if (!num) return content
   const waUrl = buildWhatsAppUrl(num)
 
   return {

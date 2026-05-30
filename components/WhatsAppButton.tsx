@@ -10,7 +10,10 @@ export function WhatsAppButton({
   message?: string
   className?: string
 }) {
-  const url = buildWhatsAppUrl(settings.whatsappNumber, message)
+  const digits = settings.whatsappNumber?.replace(/\D/g, '')
+  if (!digits || digits.length < 10) return null
+
+  const url = buildWhatsAppUrl(digits, message)
 
   return (
     <a

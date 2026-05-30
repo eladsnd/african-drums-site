@@ -53,7 +53,7 @@ Set `NEXT_PUBLIC_FORMSPREE_ID` in `.env.local` (create a form at [formspree.io](
 2. Import in [vercel.com](https://vercel.com)
 3. Set environment variables from `.env.local.example`
 4. Set `NEXT_PUBLIC_SITE_URL` to your production domain
-5. Set `NEXT_PUBLIC_WHATSAPP_NUMBER` to שלומי’s number (e.g. `972501234567`, no `+`)
+5. Set `WHATSAPP_NUMBER` to שלומי’s number (e.g. `972501234567`, digits only, no `+`) — then **Redeploy**
 6. Point DNS to Vercel
 
 ## Asset checklist
