@@ -1,6 +1,7 @@
 import 'server-only'
 
 import {fallbackContent} from '@/lib/fallback-data'
+import {mergeWithFallback} from '@/lib/merge-content'
 import type {SiteContent} from '@/lib/types'
 import {toYouTubeEmbedUrl} from '@/lib/youtube'
 import {applyWhatsAppToContent} from '@/lib/whatsapp'
@@ -10,11 +11,7 @@ import {siteContentQuery} from '@/sanity/lib/queries'
 
 function resolveContent(data: SiteContent | null): SiteContent {
   if (!data?.settings?.siteName) return fallbackContent
-  const normalized = normalizeSanityContent(data)
-  if (!normalized.services?.length) {
-    return {...normalized, services: fallbackContent.services}
-  }
-  return normalized
+  return mergeWithFallback(normalizeSanityContent(data), fallbackContent)
 }
 
 function normalizeSanityContent(content: SiteContent): SiteContent {

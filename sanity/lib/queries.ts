@@ -75,7 +75,7 @@ export const siteContentQuery = defineQuery(`{
     role
   },
   "gallery": *[_type == "galleryItem"] | order(order asc){
-    _key,
+    "_key": _id,
     type,
     "imageUrl": image.asset->url,
     videoUrl,

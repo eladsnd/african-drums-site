@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "format": "npx prettier --write . --ignore-path .gitignore",
     "type-check": "tsc --noEmit",
-    "sync-photos": "bash scripts/sync-photos.sh"
+    "sync-photos": "bash scripts/sync-photos.sh",
+    "seed:sanity": "npx tsx scripts/seed-sanity.ts"
   },
   "dependencies": {
     "@next/env": "16.2.6",

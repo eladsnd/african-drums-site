@@ -76,21 +76,37 @@ NEXT_PUBLIC_SANITY_PROJECT_TITLE=ניהול אתר — בקצב שלי
 
 אחרי deploy, ב-Manage → **Studios** → **Register studio** עם כתובת האתר (או Add host ל-preview URL). עדיין — אותו חשבון חבר פרויקט.
 
-## 7. יצירת מסמכי תוכן ראשונים (Seed)
+## 7. Fill Sanity with the same content as the site (recommended)
 
-אחרי שהאתר מחובר, פתחו `/studio` והשלימו **פעם אחת** את המסמכים הבאים (אם ריקים):
+Run **once** from the project folder (local `.env.local`):
 
-| בתפריט Studio | מזהה מסמך (נוצר אוטומטית) |
-|---------------|---------------------------|
+```bash
+npm run seed:sanity
+```
+
+Requires an **Editor** token in `.env.local`:
+
+```env
+SANITY_API_WRITE_TOKEN=your_editor_token
+```
+
+This uploads images from `public/images/` and creates/updates:
+
+| Studio | Document ID |
+|--------|-------------|
 | הגדרות אתר | `siteSettings` |
 | דף בית | `homePage` |
 | שיעורים | `lessonPage` |
-| סדנאות | `workshopsPage` |
 | אודות | `aboutPage` |
+| דף שירות (×5) | `service-workshops`, `service-performances`, … |
+| פריט גלריה (×4) | `gallery-g1` … |
 
-אפשר להעתיק טקסטים מ-`lib/fallback-data.ts` או להריץ Studio ולמלא ידנית.
+Safe to run again — it **updates** the same IDs (does not wipe the dataset).
 
-הוסיפו **פריטי גלריה** (תמונות / וידאו) ו-**המלצות** לפי הצורך.
+### Partial edits (WhatsApp vs images)
+
+- **WhatsApp on the live site** → change `WHATSAPP_NUMBER` in **Vercel** only. The site always uses that env var; Sanity’s whatsapp field is optional.
+- **Change text or add photos** → edit in `/studio`. Empty fields in Sanity still fall back to `lib/fallback-data.ts` so you won’t get blank pages while learning Studio.
 
 ## 8. בדיקה
 
