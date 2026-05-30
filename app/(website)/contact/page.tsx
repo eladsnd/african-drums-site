@@ -15,7 +15,7 @@ export default async function ContactPage() {
 
   return (
     <>
-      <PageHero title="צרו קשר" subtitle="נשמח לשמוע מכם ולחזור בהקדם" imageUrl={pageHeroImages.contact} />
+      <PageHero compact title="צרו קשר" subtitle="נשמח לשמוע מכם ולחזור בהקדם" imageUrl={pageHeroImages.contact} />
 
       <section className="mx-auto max-w-lg px-4 py-14 md:px-8 md:py-20">
         <div className="card-elevated mb-12 p-8 text-center">

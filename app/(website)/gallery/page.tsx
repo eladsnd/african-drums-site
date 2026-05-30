@@ -14,7 +14,7 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <PageHero title="גלריה" subtitle="רגעים מהשיעורים, הסדנאות וההופעות" imageUrl={pageHeroImages.gallery} />
+      <PageHero compact title="גלריה" subtitle="רגעים מהשיעורים, הסדנאות וההופעות" imageUrl={pageHeroImages.gallery} />
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
         <GalleryGrid items={gallery} />
       </section>

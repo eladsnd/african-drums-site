@@ -15,7 +15,7 @@ export default async function WorkshopsPage() {
 
   return (
     <>
-      <PageHero title={workshops.title} subtitle={workshops.intro} imageUrl={pageHeroImages.workshops} />
+      <PageHero compact title={workshops.title} subtitle={workshops.intro} imageUrl={pageHeroImages.workshops} />
 
       <section className="mx-auto max-w-4xl space-y-8 px-4 py-14 md:px-8 md:py-20">
         <SectionHeading title="סדנאות קרובות" centered />

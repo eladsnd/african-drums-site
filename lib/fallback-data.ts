@@ -22,7 +22,7 @@ export const fallbackContent: SiteContent = {
     youtubeUrl: 'https://youtube.com',
     footerText: '© שלומי סימני — תיפוף אפריקאי. כל הזכויות שמורות.',
     seoDescription:
-      'שיעורי תיפוף אפריקאי עם שלומי סימני — דג׳מbe, קצב ומעגל תיפוף. שיעורים, סדנאות והופעות בכל הארץ.',
+      'שיעורי תיפוף אפריקאי עם שלומי סימני — דג׳מבה, קצב ומעגל תיפוף. שיעורים, סדנאות והופעות בכל הארץ.',
   },
   home: {
     headline: 'שלומי סימני',
@@ -30,7 +30,7 @@ export const fallbackContent: SiteContent = {
     heroVideoUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw',
     heroPosterUrl: HERO_IMG,
     aboutTeaser:
-      'מורה לתיפוף מערב אפריקאי כ-12 שנה. מלמד דג׳מbe, דunun ומעגלי תיפוף לכל הרמות — ממתחילים ועד מתקדמים. השיעורים משלבים טכניקה, הקשבה, קהילה ושמחת חיים.',
+      'מורה לתיפוף מערב אפריקאי כ-12 שנה. מלמד דג׳מבה, דונדון ומעגלי תיפוף לכל הרמות — ממתחילים ועד מתקדמים. השיעורים משלבים טכניקה, הקשבה, קהילה ושמחת חיים.',
     aboutLinkText: 'קרא/י עוד...',
   },
   lessons: {
@@ -41,10 +41,10 @@ export const fallbackContent: SiteContent = {
     lessonTypes: [
       {
         _key: 'djembe',
-        title: 'תיפוף דג׳מbe — מעגל קצב',
+        title: 'תיפוף דג׳מבה — מעגל קצב',
         quote: 'הקצב הוא הלב של המעגל',
         description:
-          'בשיעורים נתחבר למקצב הפנימי ולפעימה משותפת של כל החוברים למעגל. נעבוד על קצב בסיסי, נכיר כלי הקשה שונים מהעולם, ונתמקד בטכניקת התיפוף האפריקאי על תופי הדג׳מbe והדundun. אין צורך בניסיון קודם.',
+          'בשיעורים נתחבר למקצב הפנימי ולפעימה משותפת של כל החוברים למעגל. נעבוד על קצב בסיסי, נכיר כלי הקשה שונים מהעולם, ונתמקד בטכניקת התיפוף האפריקאי על תופי דג׳מבה ודונדון. אין צורך בניסיון קודם.',
         schedules: [
           {
             _key: 'mon',
@@ -90,7 +90,7 @@ export const fallbackContent: SiteContent = {
     upcomingWorkshops: [
       {
         _key: 'w1',
-        title: 'סדנת דג׳מbe ליום שלם',
+        title: 'סדנת דג׳מבה ליום שלם',
         date: '15 ביוני 2026',
         location: 'גליל מערבי',
         description:
@@ -171,7 +171,7 @@ export const fallbackContent: SiteContent = {
       type: 'image',
       imageUrl:
         'https://images.unsplash.com/photo-1511379934373-1ba2bf164b0e?w=800&q=80',
-      caption: 'סדנת דג׳מbe',
+      caption: 'סדנת דג׳מבה',
     },
     {
       _key: 'g3',

@@ -1,4 +1,5 @@
 import {DecorativeDivider} from '@/components/DecorativeDivider'
+import {HebrewText} from '@/components/HebrewText'
 import {PageHero} from '@/components/PageHero'
 import {SectionHeading} from '@/components/SectionHeading'
 import {TestimonialCarousel} from '@/components/TestimonialCarousel'
@@ -18,6 +19,7 @@ export default async function LessonsPage() {
   return (
     <>
       <PageHero
+        compact
         title={lessons.title}
         subtitle={lessons.intro}
         imageUrl={pageHeroImages.lessons}
@@ -26,23 +28,25 @@ export default async function LessonsPage() {
       {lessons.lessonTypes.map((lesson, i) => (
         <section
           key={lesson._key}
-          className={`section-ambient px-4 py-14 md:px-8 md:py-20 ${i % 2 === 1 ? 'bg-orange-50/40' : ''}`}
+          className={`px-4 py-10 md:px-8 md:py-12 ${i % 2 === 1 ? 'bg-orange-50/50' : ''}`}
         >
-          <div className="relative mx-auto max-w-4xl">
+          <div className="mx-auto max-w-4xl">
             <div className="text-center">
-              <h2 className="text-2xl font-extrabold text-charcoal md:text-4xl">{lesson.title}</h2>
+              <HebrewText as="h2" className="text-2xl font-extrabold text-charcoal md:text-3xl">
+                {lesson.title}
+              </HebrewText>
               {lesson.quote && (
-                <p className="mt-5 text-xl font-medium italic text-accent md:text-2xl">
+                <p className="mt-4 text-lg font-medium italic text-accent md:text-xl">
                   &ldquo;{lesson.quote}&rdquo;
                 </p>
               )}
               <DecorativeDivider />
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-stone-600">
+              <HebrewText className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-stone-600">
                 {lesson.description}
-              </p>
+              </HebrewText>
             </div>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {lesson.schedules.map((s) => (
                 <div key={s._key} className="schedule-card">
                   <p className="text-lg font-bold text-accent">{s.day}</p>
@@ -58,7 +62,7 @@ export default async function LessonsPage() {
             </div>
 
             {lessons.registrationUrl && i === 0 && (
-              <div className="mt-12 text-center">
+              <div className="mt-10 text-center">
                 <Link
                   href={lessons.registrationUrl}
                   target="_blank"
@@ -73,14 +77,14 @@ export default async function LessonsPage() {
         </section>
       ))}
 
-      <section className="px-4 py-16 md:px-8 md:py-24">
+      <section className="px-4 py-12 md:px-8 md:py-16">
         <div className="mx-auto max-w-5xl">
           <SectionHeading title="מחירון" subtitle={lessons.pricingNote} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          <div className="mt-8 grid gap-5 sm:grid-cols-3">
             {lessons.pricing.map((p, idx) => (
               <div
                 key={p._key}
-                className={`card-elevated p-8 text-center ${idx === 0 ? 'ring-2 ring-accent/30' : ''}`}
+                className={`card-elevated p-6 text-center md:p-8 ${idx === 0 ? 'ring-2 ring-accent/30' : ''}`}
               >
                 {idx === 0 && (
                   <span className="mb-3 inline-block rounded-full bg-accent px-3 py-0.5 text-xs font-bold text-white">

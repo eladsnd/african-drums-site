@@ -14,7 +14,7 @@ export default async function AboutPage() {
 
   return (
     <>
-      <PageHero title={about.title} imageUrl={pageHeroImages.about} />
+      <PageHero compact title={about.title} imageUrl={pageHeroImages.about} />
 
       <section className="mx-auto max-w-5xl px-4 py-14 md:px-8 md:py-20">
         <div className="flex flex-col items-center gap-10 md:flex-row-reverse md:items-start md:gap-14">
