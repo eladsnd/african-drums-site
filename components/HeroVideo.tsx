@@ -15,10 +15,10 @@ export function HeroVideo({
 
   if (!videoUrl) {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-stone-800">
+      <div className="relative aspect-video w-full bg-stone-900">
         {posterUrl && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={posterUrl} alt={title} className="h-full w-full object-cover opacity-80" />
+          <img src={posterUrl} alt={title} className="h-full w-full object-cover" />
         )}
       </div>
     )
@@ -26,7 +26,7 @@ export function HeroVideo({
 
   if (playing) {
     return (
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black shadow-lg">
+      <div className="relative aspect-video w-full bg-black">
         <iframe
           src={`${videoUrl}?autoplay=1`}
           title={title}
@@ -41,17 +41,22 @@ export function HeroVideo({
   return (
     <button
       type="button"
-      className="group relative aspect-video w-full overflow-hidden rounded-lg bg-stone-800 shadow-lg"
+      className="group relative aspect-video w-full bg-stone-900"
       onClick={() => setPlaying(true)}
       aria-label="הפעל וידאו"
     >
       {posterUrl && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={posterUrl} alt={title} className="h-full w-full object-cover transition group-hover:scale-105" />
+        <img
+          src={posterUrl}
+          alt={title}
+          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"
+        />
       )}
-      <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition group-hover:bg-black/40">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-lg md:h-20 md:w-20">
-          <svg className="mr-[-4px] h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+      <span className="absolute inset-0 flex items-center justify-center">
+        <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/95 text-accent shadow-2xl ring-4 ring-white/50 transition group-hover:scale-110 md:h-24 md:w-24">
+          <svg className="mr-[-5px] h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z" />
           </svg>
         </span>

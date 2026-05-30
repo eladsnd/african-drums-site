@@ -19,36 +19,47 @@ export function SiteHeader({settings}: {settings: SiteSettings}) {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-stone-200/60 bg-cream/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8">
-        <Link href="/" className="flex items-center gap-3">
-          {settings.logoUrl ? (
+    <header className="sticky top-0 z-50 border-b border-orange-200/50 bg-[var(--color-bg)]/90 shadow-sm backdrop-blur-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-8 md:py-4">
+        <Link href="/" className="group flex items-center gap-3">
+          {settings.logoUrl && (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={settings.logoUrl} alt={settings.siteName} className="h-10 w-10 md:h-12 md:w-12" />
-          ) : (
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal text-sm font-bold text-cream md:h-12 md:w-12">
-              {settings.siteName.charAt(0)}
-            </span>
+            <img
+              src={settings.logoUrl}
+              alt=""
+              className="h-11 w-11 rounded-full shadow-md ring-2 ring-orange-200/60 transition group-hover:ring-accent/40 md:h-12 md:w-12"
+            />
           )}
+          <span className="hidden flex-col sm:flex">
+            <span className="text-sm font-extrabold leading-tight text-charcoal md:text-base">
+              {settings.siteName}
+            </span>
+            <span className="text-xs font-medium text-accent">{settings.tagline.split('—')[0]}</span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium transition hover:text-accent md:text-base ${
-                pathname === item.href ? 'text-accent' : 'text-charcoal'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-1 md:flex">
+          {navItems.map((item) => {
+            const active = pathname === item.href
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`rounded-lg px-3 py-2 text-sm font-semibold transition md:text-[15px] ${
+                  active
+                    ? 'nav-link-active bg-orange-50 text-accent'
+                    : 'text-stone-700 hover:bg-orange-50/80 hover:text-accent'
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </nav>
 
         <button
           type="button"
-          className="rounded-md p-2 text-charcoal md:hidden"
+          className="rounded-lg p-2.5 text-charcoal ring-1 ring-orange-200/60 md:hidden"
           aria-label="תפריט"
           onClick={() => setOpen(!open)}
         >
@@ -63,13 +74,15 @@ export function SiteHeader({settings}: {settings: SiteSettings}) {
       </div>
 
       {open && (
-        <nav className="border-t border-stone-200/60 bg-cream px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-3">
+        <nav className="border-t border-orange-200/50 bg-[var(--color-bg)] px-4 py-4 shadow-inner md:hidden">
+          <div className="flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`py-1 text-base font-medium ${pathname === item.href ? 'text-accent' : ''}`}
+                className={`rounded-lg px-3 py-2.5 text-base font-semibold ${
+                  pathname === item.href ? 'bg-orange-100 text-accent' : 'text-stone-700'
+                }`}
                 onClick={() => setOpen(false)}
               >
                 {item.label}

@@ -1,6 +1,7 @@
 import {GalleryGrid} from '@/components/GalleryGrid'
-import {TribalBanner} from '@/components/TribalBanner'
+import {PageHero} from '@/components/PageHero'
 import {getSiteContent} from '@/lib/data'
+import {pageHeroImages} from '@/lib/fallback-data'
 import type {Metadata} from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -13,8 +14,8 @@ export default async function GalleryPage() {
 
   return (
     <>
-      <TribalBanner title="גלריה" />
-      <section className="mx-auto max-w-6xl px-4 py-10 md:px-8 md:py-14">
+      <PageHero title="גלריה" subtitle="רגעים מהשיעורים, הסדנאות וההופעות" imageUrl={pageHeroImages.gallery} />
+      <section className="mx-auto max-w-6xl px-4 py-14 md:px-8 md:py-20">
         <GalleryGrid items={gallery} />
       </section>
     </>

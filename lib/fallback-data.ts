@@ -1,25 +1,34 @@
 import type {SiteContent} from './types'
 
+const HERO_IMG =
+  'https://images.unsplash.com/photo-1519892305287-2d6a0c15f58e?w=1920&q=80'
+const LESSONS_IMG =
+  'https://images.unsplash.com/photo-1514525253161-7a46fb19bda?w=1920&q=80'
+const WORKSHOP_IMG =
+  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1920&q=80'
+const PORTRAIT_IMG =
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80'
+
 export const fallbackContent: SiteContent = {
   settings: {
-    siteName: 'אמנון כהן',
+    siteName: 'שלומי סימני',
     tagline: 'תיפוף אפריקאי — שיעורים, סדנאות והופעות',
     logoUrl: '/logo.svg',
-    accentColor: '#B45309',
-    backgroundColor: '#FDF6EC',
+    accentColor: '#C2410C',
+    backgroundColor: '#FFF7ED',
     whatsappNumber: '972501234567',
     contactEmail: 'contact@example.com',
     instagramUrl: 'https://instagram.com',
     youtubeUrl: 'https://youtube.com',
-    footerText: '© אמנון כהן — תיפוף אפריקאי. כל הזכויות שמורות.',
+    footerText: '© שלומי סימני — תיפוף אפריקאי. כל הזכויות שמורות.',
     seoDescription:
-      'שיעורי תיפוף אפריקאי עם אמנון כהן — דג׳מbe, קצב ומעגל תיפוף. שיעורים, סדנאות והופעות בכל הארץ.',
+      'שיעורי תיפוף אפריקאי עם שלומי סימני — דג׳מbe, קצב ומעגל תיפוף. שיעורים, סדנאות והופעות בכל הארץ.',
   },
   home: {
-    headline: 'אמנון כהן',
+    headline: 'שלומי סימני',
     subheadline: 'תיפוף אפריקאי — שיעורים, סדנאות והופעות',
-    heroVideoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    heroPosterUrl: '/images/hero-poster.svg',
+    heroVideoUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw',
+    heroPosterUrl: HERO_IMG,
     aboutTeaser:
       'מורה לתיפוף מערב אפריקאי כ-12 שנה. מלמד דג׳מbe, דunun ומעגלי תיפוף לכל הרמות — ממתחילים ועד מתקדמים. השיעורים משלבים טכניקה, הקשבה, קהילה ושמחת חיים.',
     aboutLinkText: 'קרא/י עוד...',
@@ -33,7 +42,7 @@ export const fallbackContent: SiteContent = {
       {
         _key: 'djembe',
         title: 'תיפוף דג׳מbe — מעגל קצב',
-        quote: '"הקצב הוא הלב של המעגל"',
+        quote: 'הקצב הוא הלב של המעגל',
         description:
           'בשיעורים נתחבר למקצב הפנימי ולפעימה משותפת של כל החוברים למעגל. נעבוד על קצב בסיסי, נכיר כלי הקשה שונים מהעולם, ונתמקד בטכניקת התיפוף האפריקאי על תופי הדג׳מbe והדundun. אין צורך בניסיון קודם.',
         schedules: [
@@ -57,7 +66,7 @@ export const fallbackContent: SiteContent = {
         _key: 'rhythm',
         title: 'קצב ותיאוריה — רמה מתקדמת',
         description:
-          'שיעור מעמיק למתקדמים: פolyrhythms, מבנה מקצבים מערב אפריקאיים, סולואים וליווי מוזיקלי. מתאים למי שכבר מכיר/ה את הבסיס ורוצה להעמיק.',
+          'שיעור מעמיק למתקדמים: פוליריתמים, מבנה מקצבים מערב אפריקאיים, סולואים וליווי מוזיקלי. מתאים למי שכבר מכיר/ה את הבסיס ורוצה להעמיק.',
         schedules: [
           {
             _key: 'thu',
@@ -84,7 +93,8 @@ export const fallbackContent: SiteContent = {
         title: 'סדנת דג׳מbe ליום שלם',
         date: '15 ביוני 2026',
         location: 'גליל מערבי',
-        description: 'סדנה פתוחה לכל הרמות — מהבסיס ועד polyrhythms. כולל הפסקות, ארוחת צהריים ומעגל סיום.',
+        description:
+          'סדנה פתוחה לכל הרמות — מהבסיס ועד פוליריתמים. כולל הפסקות, ארוחת צהריים ומעגל סיום.',
         registrationUrl: 'https://wa.me/972501234567',
       },
       {
@@ -106,10 +116,10 @@ export const fallbackContent: SiteContent = {
     title: 'קצת עלי',
     bio:
       'מורה, מתופף ויוצר — מלמד תיפוף מערב אפריקאי כ-12 שנה בכל הארץ.\n\n' +
-      'המסע שלי התחיל במסע לסנגל, שם נחשפתי לעולם המקצבים, המסורות והמעגל השבטי. מאז הובלתי מאות סדנאות, הופעות ושיעורים שבועיים — ממעגלים intimate ועד במות גדולות.\n\n' +
+      'המסע שלי התחיל במסע לסנגל, שם נחשפתי לעולם המקצבים, המסורות והמעגל השבטי. מאז הובלתי מאות סדנאות, הופעות ושיעורים שבועיים — ממעגלים אינטימיים ועד במות גדולות.\n\n' +
       'אני מאמין שהתיפוף הוא דרך לחיבור — לגוף, לקהילה ולשורשים. בכל שיעור וסדנה אני שואף ליצור מרחב בטוח, שמח ומעצים, שבו כל אחד ואחת יכולים למצוא את הקול שלהם.\n\n' +
       'בין היתר: שיתופי פעולה עם הרכבים מוזיקליים, סדנאות עם אמנים מארץ ומחו״ל, והופעות בפסטיבלים.',
-    portraitUrl: '/images/portrait.svg',
+    portraitUrl: PORTRAIT_IMG,
   },
   media: [
     {
@@ -129,7 +139,7 @@ export const fallbackContent: SiteContent = {
     {
       _key: 't1',
       quote:
-        'אחרי שנתיים אצל אמנון אני מרגיש שהתיפוף הפך לחלק ממני. הוא מורה סבלני, מקצועי, ויודע ליצור מעגל שבו כולם מרגישים בבית.',
+        'אחרי שנתיים אצל שלומי אני מרגיש שהתיפוף הפך לחלק ממני. הוא מורה סבלני, מקצועי, ויודע ליצור מעגל שבו כולם מרגישים בבית.',
       author: 'יוסי לוי',
       role: 'תלמיד',
     },
@@ -137,7 +147,7 @@ export const fallbackContent: SiteContent = {
       _key: 't2',
       quote:
         'הסדנה שהזמנו לצוות הייתה חוויה מדהימה. כולם יצאו עם חיוך, אנרגיה וחיבור שלא ציפינו לו.',
-      author: 'מיכal כהן',
+      author: 'מיכל כהן',
       role: 'מנהלת HR',
     },
     {
@@ -152,26 +162,38 @@ export const fallbackContent: SiteContent = {
     {
       _key: 'g1',
       type: 'image',
-      imageUrl: '/images/gallery-1.svg',
+      imageUrl:
+        'https://images.unsplash.com/photo-1519892305287-2d6a0c15f58e?w=800&q=80',
       caption: 'מעגל תיפוף בגליל',
     },
     {
       _key: 'g2',
       type: 'image',
-      imageUrl: '/images/gallery-2.svg',
+      imageUrl:
+        'https://images.unsplash.com/photo-1511379934373-1ba2bf164b0e?w=800&q=80',
       caption: 'סדנת דג׳מbe',
     },
     {
       _key: 'g3',
       type: 'video',
-      videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+      videoUrl: 'https://www.youtube.com/embed/jNQXAC9IVRw',
       caption: 'הופעה בפסטיבל',
     },
     {
       _key: 'g4',
       type: 'image',
-      imageUrl: '/images/gallery-3.svg',
+      imageUrl:
+        'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
       caption: 'שיעור שבועי',
     },
   ],
+}
+
+/** Page hero images keyed by route segment */
+export const pageHeroImages: Record<string, string> = {
+  lessons: LESSONS_IMG,
+  workshops: WORKSHOP_IMG,
+  about: PORTRAIT_IMG,
+  gallery: HERO_IMG,
+  contact: LESSONS_IMG,
 }

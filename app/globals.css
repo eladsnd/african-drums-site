@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --color-accent: #b45309;
-  --color-bg: #fdf6ec;
+  --color-accent: #c2410c;
+  --color-accent-dark: #9a3412;
+  --color-accent-light: #fed7aa;
+  --color-bg: #fff7ed;
+  --color-bg-warm: #ffedd5;
   --color-charcoal: #1c1917;
+  --color-muted: #57534e;
+  --shadow-soft: 0 4px 24px -4px rgba(154, 52, 18, 0.12);
+  --shadow-card: 0 8px 32px -8px rgba(28, 25, 23, 0.15);
 }
 
 html {
@@ -19,14 +25,92 @@ body {
 }
 
 .pattern-bg {
-  background-image: url('/patterns/watermark.svg');
-  background-repeat: repeat;
-  background-size: 400px;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(254, 215, 170, 0.5), transparent),
+    url('/patterns/watermark.svg');
+  background-repeat: no-repeat, repeat;
+  background-size: 100% 600px, 360px;
 }
 
 .tribal-band {
-  background-color: var(--color-accent);
-  background-image: url('/patterns/tribal-band.svg');
-  background-repeat: repeat-x;
-  background-size: auto 100%;
+  background: linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #ea580c 100%);
+  background-image:
+    url('/patterns/tribal-band.svg'),
+    linear-gradient(135deg, var(--color-accent-dark) 0%, var(--color-accent) 50%, #ea580c 100%);
+  background-repeat: repeat-x, no-repeat;
+  background-size: auto 100%, cover;
+  box-shadow: 0 4px 20px rgba(154, 52, 18, 0.25);
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold text-white shadow-lg transition;
+    background: linear-gradient(180deg, #ea580c 0%, var(--color-accent) 100%);
+    box-shadow: var(--shadow-soft), 0 2px 0 rgba(255, 255, 255, 0.15) inset;
+  }
+
+  .btn-primary:hover {
+    @apply scale-[1.02];
+    filter: brightness(1.05);
+  }
+
+  .section-ambient {
+    @apply relative overflow-hidden;
+  }
+
+  .section-ambient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 247, 237, 0.92) 0%, rgba(255, 237, 213, 0.88) 100%);
+    pointer-events: none;
+  }
+
+  .card-elevated {
+    @apply rounded-2xl border border-orange-100/80 bg-white/90 backdrop-blur-sm;
+    box-shadow: var(--shadow-card);
+  }
+
+  .nav-link-active {
+    @apply relative text-accent;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--color-accent);
+  }
+
+  .quote-mark {
+    font-family: Georgia, serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+
+  .schedule-card {
+    @apply card-elevated relative overflow-hidden p-6 text-center transition duration-300;
+  }
+
+  .schedule-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--color-accent-light), var(--color-accent));
+    border-radius: 0 4px 4px 0;
+  }
+
+  .schedule-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -12px rgba(154, 52, 18, 0.2);
+  }
 }

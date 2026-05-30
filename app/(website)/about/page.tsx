@@ -1,5 +1,7 @@
-import {TribalBanner} from '@/components/TribalBanner'
+import {PageHero} from '@/components/PageHero'
+import {SectionHeading} from '@/components/SectionHeading'
 import {getSiteContent} from '@/lib/data'
+import {pageHeroImages} from '@/lib/fallback-data'
 import type {Metadata} from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,40 +14,42 @@ export default async function AboutPage() {
 
   return (
     <>
-      <TribalBanner title={about.title} />
+      <PageHero title={about.title} imageUrl={pageHeroImages.about} />
 
-      <section className="mx-auto max-w-4xl px-4 py-10 md:px-8 md:py-14">
-        <div className="flex flex-col items-center gap-8 md:flex-row-reverse md:items-start">
+      <section className="mx-auto max-w-5xl px-4 py-14 md:px-8 md:py-20">
+        <div className="flex flex-col items-center gap-10 md:flex-row-reverse md:items-start md:gap-14">
           {about.portraitUrl && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={about.portraitUrl}
-              alt={about.title}
-              className="h-48 w-48 flex-shrink-0 rounded-full border-4 border-accent object-cover shadow-lg md:h-64 md:w-64"
-            />
+            <div className="flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={about.portraitUrl}
+                alt={about.title}
+                className="h-56 w-56 rounded-2xl object-cover shadow-2xl ring-4 ring-orange-100 md:h-72 md:w-72"
+              />
+            </div>
           )}
-          <div className="flex-1 whitespace-pre-line text-center leading-relaxed text-stone-700 md:text-right md:text-lg">
+          <div className="flex-1 whitespace-pre-line text-lg leading-loose text-stone-700 md:text-xl md:leading-loose">
             {about.bio}
           </div>
         </div>
       </section>
 
       {media.length > 0 && (
-        <section className="border-t border-stone-200/60 bg-white/50 px-4 py-10 md:px-8 md:py-14">
+        <section className="border-t border-orange-200/50 bg-orange-50/30 px-4 py-14 md:px-8 md:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="mb-8 text-center text-2xl font-bold">מהתקשורת</h2>
-            <ul className="space-y-4">
+            <SectionHeading title="מהתקשורת" />
+            <ul className="mt-10 space-y-4">
               {media.map((item) => (
                 <li key={item._key}>
                   <a
                     href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block rounded-lg border border-stone-200 bg-white p-4 transition hover:border-accent hover:shadow-sm"
+                    className="card-elevated flex flex-col gap-1 p-5 transition hover:ring-2 hover:ring-accent/20 md:p-6"
                   >
-                    <span className="font-medium text-charcoal">{item.title}</span>
+                    <span className="text-lg font-bold text-charcoal">{item.title}</span>
                     {item.source && (
-                      <span className="mt-1 block text-sm text-stone-500">{item.source}</span>
+                      <span className="text-sm font-medium text-accent">{item.source}</span>
                     )}
                   </a>
                 </li>

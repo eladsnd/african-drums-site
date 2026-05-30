@@ -27,6 +27,8 @@ export default async function WebsiteLayout({children}: LayoutProps<'/'>) {
       style={
         {
           '--color-accent': settings.accentColor,
+          '--color-accent-dark': '#9a3412',
+          '--color-accent-light': '#fed7aa',
           '--color-bg': settings.backgroundColor,
         } as React.CSSProperties
       }

@@ -1,6 +1,9 @@
+import {DecorativeDivider} from '@/components/DecorativeDivider'
+import {PageHero} from '@/components/PageHero'
+import {SectionHeading} from '@/components/SectionHeading'
 import {TestimonialCarousel} from '@/components/TestimonialCarousel'
-import {TribalBanner} from '@/components/TribalBanner'
 import {getSiteContent} from '@/lib/data'
+import {pageHeroImages} from '@/lib/fallback-data'
 import type {Metadata} from 'next'
 import Link from 'next/link'
 
@@ -14,42 +17,53 @@ export default async function LessonsPage() {
 
   return (
     <>
-      <TribalBanner title={lessons.title} />
+      <PageHero
+        title={lessons.title}
+        subtitle={lessons.intro}
+        imageUrl={pageHeroImages.lessons}
+      />
 
-      <section className="mx-auto max-w-4xl px-4 py-10 md:px-8 md:py-14">
-        <p className="text-center text-lg text-stone-700 md:text-xl">{lessons.intro}</p>
-      </section>
+      {lessons.lessonTypes.map((lesson, i) => (
+        <section
+          key={lesson._key}
+          className={`section-ambient px-4 py-14 md:px-8 md:py-20 ${i % 2 === 1 ? 'bg-orange-50/40' : ''}`}
+        >
+          <div className="relative mx-auto max-w-4xl">
+            <div className="text-center">
+              <h2 className="text-2xl font-extrabold text-charcoal md:text-4xl">{lesson.title}</h2>
+              {lesson.quote && (
+                <p className="mt-5 text-xl font-medium italic text-accent md:text-2xl">
+                  &ldquo;{lesson.quote}&rdquo;
+                </p>
+              )}
+              <DecorativeDivider />
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-stone-600">
+                {lesson.description}
+              </p>
+            </div>
 
-      {lessons.lessonTypes.map((lesson) => (
-        <section key={lesson._key} className="border-t border-stone-200/60 bg-white/50 px-4 py-10 md:px-8 md:py-14">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="text-center text-2xl font-bold md:text-3xl">{lesson.title}</h2>
-            {lesson.quote && (
-              <p className="mt-4 text-center text-lg italic text-accent">&ldquo;{lesson.quote}&rdquo;</p>
-            )}
-            <p className="mt-6 text-center leading-relaxed text-stone-700">{lesson.description}</p>
-
-            <div className="mt-8 space-y-4">
+            <div className="mt-10 grid gap-5 sm:grid-cols-2">
               {lesson.schedules.map((s) => (
-                <div
-                  key={s._key}
-                  className="rounded-lg border border-stone-200 bg-white p-5 text-center shadow-sm"
-                >
-                  <p className="font-semibold text-accent">{s.day}</p>
-                  <p className="mt-1 text-lg">{s.time}</p>
-                  <p className="mt-1 text-stone-600">{s.location}</p>
-                  {s.note && <p className="mt-2 text-sm text-stone-500">{s.note}</p>}
+                <div key={s._key} className="schedule-card">
+                  <p className="text-lg font-bold text-accent">{s.day}</p>
+                  <p className="mt-2 text-2xl font-extrabold tracking-tight text-charcoal">{s.time}</p>
+                  <p className="mt-2 text-stone-600">{s.location}</p>
+                  {s.note && (
+                    <span className="mt-4 inline-block rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-accent-dark">
+                      {s.note}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
 
-            {lessons.registrationUrl && (
-              <div className="mt-8 text-center">
+            {lessons.registrationUrl && i === 0 && (
+              <div className="mt-12 text-center">
                 <Link
                   href={lessons.registrationUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block rounded-full bg-accent px-8 py-3 font-semibold text-white transition hover:bg-accent/90"
+                  className="btn-primary"
                 >
                   {lessons.registrationLabel}
                 </Link>
@@ -59,19 +73,26 @@ export default async function LessonsPage() {
         </section>
       ))}
 
-      <section className="mx-auto max-w-4xl px-4 py-10 md:px-8 md:py-14">
-        <h2 className="mb-6 text-center text-2xl font-bold">מחירון</h2>
-        <div className="grid gap-4 sm:grid-cols-3">
-          {lessons.pricing.map((p) => (
-            <div key={p._key} className="rounded-lg border border-stone-200 bg-white p-5 text-center shadow-sm">
-              <p className="text-stone-600">{p.label}</p>
-              <p className="mt-2 text-2xl font-bold text-accent">{p.price}</p>
-            </div>
-          ))}
+      <section className="px-4 py-16 md:px-8 md:py-24">
+        <div className="mx-auto max-w-5xl">
+          <SectionHeading title="מחירון" subtitle={lessons.pricingNote} />
+          <div className="mt-10 grid gap-6 sm:grid-cols-3">
+            {lessons.pricing.map((p, idx) => (
+              <div
+                key={p._key}
+                className={`card-elevated p-8 text-center ${idx === 0 ? 'ring-2 ring-accent/30' : ''}`}
+              >
+                {idx === 0 && (
+                  <span className="mb-3 inline-block rounded-full bg-accent px-3 py-0.5 text-xs font-bold text-white">
+                    פופולרי
+                  </span>
+                )}
+                <p className="font-medium text-stone-600">{p.label}</p>
+                <p className="mt-3 text-3xl font-extrabold text-accent">{p.price}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        {lessons.pricingNote && (
-          <p className="mt-6 text-center text-sm text-stone-500">{lessons.pricingNote}</p>
-        )}
       </section>
 
       <TestimonialCarousel testimonials={testimonials} />
