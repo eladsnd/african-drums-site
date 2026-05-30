@@ -5,7 +5,26 @@ const workshop = defineType({
   title: 'סדנה',
   type: 'object',
   fields: [
-    defineField({name: 'title', title: 'כותרת', type: 'string'}),
+    defineField({
+      name: 'anchorId',
+      title: 'פריט בתפריט',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'סדנאות', value: 'workshops'},
+          {title: 'הופעות', value: 'performances'},
+          {title: 'בר מצווה', value: 'bar-mitzvah'},
+          {title: 'בתי ספר', value: 'schools'},
+          {title: 'צרכים מיוחדים', value: 'special'},
+        ],
+      },
+    }),
+    defineField({
+      name: 'title',
+      title: 'כותרת',
+      type: 'string',
+      description: 'למשל: סדנאות, הופעות, בר מצווה, בתי ספר, צרכים מיוחדים',
+    }),
     defineField({name: 'date', title: 'תאריך', type: 'string'}),
     defineField({name: 'location', title: 'מיקום', type: 'string'}),
     defineField({name: 'description', title: 'תיאור', type: 'text'}),
@@ -22,7 +41,9 @@ export default defineType({
     defineField({name: 'intro', title: 'מבוא', type: 'text'}),
     defineField({
       name: 'upcomingWorkshops',
-      title: 'סדנאות קרובות',
+      title: 'קטגוריות (סרגל: סדנאות, הופעות, בר מצווה, בתי ספר, צרכים מיוחדים)',
+      description:
+        'סדר הפריטים כמו בסרגל. מומלץ כותרות תואמות. מזהה פנימי (_key) ב-Studio: workshops, performances, bar-mitzvah, schools, special',
       type: 'array',
       of: [{type: 'workshop'}],
     }),

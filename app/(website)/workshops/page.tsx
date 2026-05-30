@@ -24,9 +24,13 @@ export default async function WorkshopsPage() {
       />
 
       <section className="mx-auto max-w-4xl space-y-8 px-4 py-14 md:px-8 md:py-20">
-        <SectionHeading title="סדנאות קרובות" centered />
+        <SectionHeading title="מה אנחנו מציעים" centered />
         {workshops.upcomingWorkshops.map((w) => (
-          <article key={w._key} className="card-elevated p-8 md:p-10">
+          <article
+            key={w._key}
+            id={w.anchorId || w._key}
+            className="card-elevated scroll-mt-28 p-8 md:p-10"
+          >
             <h3 className="text-2xl font-extrabold text-accent md:text-3xl">{w.title}</h3>
             <div className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
               <span className="rounded-full bg-orange-100 px-4 py-1.5 text-accent-dark">{w.date}</span>

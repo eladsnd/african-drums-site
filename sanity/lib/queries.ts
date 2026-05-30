@@ -53,6 +53,7 @@ export const siteContentQuery = defineQuery(`{
     intro,
     upcomingWorkshops[]{
       _key,
+      anchorId,
       title,
       date,
       location,

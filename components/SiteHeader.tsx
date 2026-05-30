@@ -1,24 +1,34 @@
 'use client'
 
 import {HeroImage} from '@/components/HeroImage'
+import {mainNavItems} from '@/lib/nav'
 import Link from 'next/link'
 import {usePathname} from 'next/navigation'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import type {SiteSettings} from '@/lib/types'
 
-const navItems = [
-  {href: '/', label: 'בית'},
-  {href: '/lessons', label: 'שיעורים'},
-  {href: '/workshops', label: 'סדנאות'},
-  {href: '/about', label: 'אודות'},
-  {href: '/gallery', label: 'גלריה'},
-  {href: '/contact', label: 'צרו קשר'},
-]
+function isNavActive(pathname: string, hash: string, item: (typeof mainNavItems)[number]) {
+  if (item.sectionId) {
+    return pathname === '/workshops' && hash === item.sectionId
+  }
+  if (item.href === '/') {
+    return pathname === '/'
+  }
+  return pathname === item.href.split('#')[0]
+}
 
 export function SiteHeader({settings}: {settings: SiteSettings}) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const [hash, setHash] = useState('')
   const taglineShort = settings.tagline.split('·')[0]?.trim() || settings.tagline
+
+  useEffect(() => {
+    const update = () => setHash(window.location.hash.replace('#', ''))
+    update()
+    window.addEventListener('hashchange', update)
+    return () => window.removeEventListener('hashchange', update)
+  }, [pathname])
 
   return (
     <header className="sticky top-0 z-50 border-b border-orange-200/50 bg-[var(--color-bg)]/90 shadow-sm backdrop-blur-md">
@@ -38,14 +48,14 @@ export function SiteHeader({settings}: {settings: SiteSettings}) {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => {
-            const active = pathname === item.href
+        <nav className="hidden items-center gap-0.5 lg:flex">
+          {mainNavItems.map((item) => {
+            const active = isNavActive(pathname, hash, item)
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-lg px-3 py-2 text-sm font-semibold transition md:text-[15px] ${
+                className={`whitespace-nowrap rounded-lg px-2 py-2 text-sm font-semibold transition lg:px-2.5 lg:text-[14px] ${
                   active
                     ? 'nav-link-active bg-orange-50 text-accent'
                     : 'text-stone-700 hover:bg-orange-50/80 hover:text-accent'
@@ -59,7 +69,7 @@ export function SiteHeader({settings}: {settings: SiteSettings}) {
 
         <button
           type="button"
-          className="rounded-lg p-2.5 text-charcoal ring-1 ring-orange-200/60 md:hidden"
+          className="rounded-lg p-2.5 text-charcoal ring-1 ring-orange-200/60 lg:hidden"
           aria-label="תפריט"
           onClick={() => setOpen(!open)}
         >
@@ -74,14 +84,14 @@ export function SiteHeader({settings}: {settings: SiteSettings}) {
       </div>
 
       {open && (
-        <nav className="border-t border-orange-200/50 bg-[var(--color-bg)] px-4 py-4 shadow-inner md:hidden">
+        <nav className="border-t border-orange-200/50 bg-[var(--color-bg)] px-4 py-4 shadow-inner lg:hidden">
           <div className="flex flex-col gap-1">
-            {navItems.map((item) => (
+            {mainNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`rounded-lg px-3 py-2.5 text-base font-semibold ${
-                  pathname === item.href ? 'bg-orange-100 text-accent' : 'text-stone-700'
+                  isNavActive(pathname, hash, item) ? 'bg-orange-100 text-accent' : 'text-stone-700'
                 }`}
                 onClick={() => setOpen(false)}
               >

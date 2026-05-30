@@ -62,6 +62,8 @@ export type LessonPage = {
 
 export type Workshop = {
   _key: string
+  /** Matches nav hash: workshops, performances, bar-mitzvah, schools, special */
+  anchorId?: string
   title: string
   date: string
   location: string
